@@ -60,3 +60,23 @@ class EDJ
             $access_links.on("click", ->
                 $($(this).attr("href")).focus()
             )
+<<<<<<< HEAD
+=======
+
+    @ios_rotate_fix =
+        ###
+        Alter viewport meta when device rotates
+
+        Orientation and scale, Jeremy Keith: http://adactio.com/journal/4470/
+        ###
+        run: =>
+            return navigator.userAgent.match(/(ipad|iphone)/i)
+    
+        init: =>
+            viewportmeta = document.querySelectorAll("meta[name='viewport']")[0] 
+            if viewportmeta
+                viewportmeta.content = "width=device-width, minimum-scale=1.0, maximum-scale=1.0"
+                @$body.addEventListener("gesturestart", ->
+                    viewportmeta.content = "width=device-width, minimum-scale=0.25, maximum-scale=1.6"
+                , false)
+>>>>>>> coffee scripted EDJ in the face
