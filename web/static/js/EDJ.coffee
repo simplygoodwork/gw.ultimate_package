@@ -34,7 +34,7 @@ class EDJ
         for prop of this
             _run = this[prop].run
             # If the run property is a true (evald function or boolean)
-            if (typeof _run is "boolean") or (typeof _run is "function" and _run())
+            if (typeof _run is "boolean" and _run) or (typeof _run is "function" and _run())
                 # Tell the log we're off
                 @log("EDJ running #{prop}")
                 # Run the init method
