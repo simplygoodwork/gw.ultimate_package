@@ -66,6 +66,7 @@ class EDJ
         Alter viewport meta when device rotates
 
         Orientation and scale, Jeremy Keith: http://adactio.com/journal/4470/
+        -----------------------------------------------------------------------
         ###
         run: =>
             return navigator.userAgent.match(/(ipad|iphone)/i)
