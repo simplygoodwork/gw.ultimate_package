@@ -2,6 +2,7 @@
 !.gitignore
 !.htaccess
 
+composer.lock
 /vendor
 /web/static/css/
 /web/static/js/EDJ.js
