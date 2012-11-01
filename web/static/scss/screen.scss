@@ -32,6 +32,10 @@
 
 // @start BODY -------------------- //
 
+html {
+    overflow-y:scroll;
+}
+
 body {
     background-color:$white;
     color:$black;
@@ -40,7 +44,7 @@ body {
 }
 
     // @start ACCESSIBILITY NAVIGATION -------------------- //
-    
+
     ul#nav_access {
         list-style:none;
         margin:0;
@@ -115,44 +119,44 @@ ul {
 }
 
 ul {
-    
+
 
     li {
-        
+
     }
 }
 
 ol {
-    
+
 
     li {
-        
+
     }
 }
 
 dl {
-    
+
 
     dt {
-        
+
     }
     dd {
-        
+
     }
 }
 
 hr {
-    
+
 }
 
 blockquote {
-    
+
 
     p {
-        
+
     }
     cite {
-        
+
     }
 }
 
@@ -161,18 +165,18 @@ pre {
     font-family:monospace;
 }
 code {
-    
+
 }
 pre {
-    
+
 
     code {
-        
+
     }
 }
 
 abbr {
-    
+
 
     &:hover {
         cursor:help;
@@ -200,17 +204,17 @@ sub {
 }
 
 small {
-    
+
 }
 
 figure {
-    
+
 
     img {
-        
+
     }
     figcaption {
-        
+
     }
 }
 
@@ -225,59 +229,59 @@ video {
     // @start FORMS -------------------- //
 
     form {
-        
+
 
         dl {
-            
+
 
             dt {
-                
+
             }
             dd {
-                
+
             }
         }
 
         ul {
-            
+
         }
         li {
-            
+
         }
 
     } // form
 
     fieldset {
-        
+
     }
 
     label {
-        
+
 
         em {
-            
+
         }
     } // label
 
     input[type="text"],
     textarea {
-        
+
     }
     input[type="checkbox"],
     input[type="radio"] {
-        
+
     }
     textarea {
-        
+
     }
 
     .error input,
     .error textarea {
-        
+
     }
 
     form .cta_button {
-        
+
         button {
             border:0;
             cursor:pointer;
@@ -290,50 +294,50 @@ video {
     // @start TABLES -------------------- //
 
     table {
-        
+
     }
 
     caption {
-        
+
     }
     legend {
-        
+
     }
 
     tr {
-        
+
     }
 
     th,
     td {
-        
+
     }
     th {
-        
+
     }
     td {
-        
+
     }
 
     thead {
-        
+
 
         th {
-            
+
         }
         td {
-            
+
         }
     } // thead
 
     tbody {
-        
+
 
         th {
-            
+
         }
         td {
-            
+
         }
     } // tbody
 
@@ -351,7 +355,7 @@ h3,
 h4,
 h5,
 h6 {
-    
+
 }
 
 h1 {
@@ -397,11 +401,11 @@ h4 {
 // @start LINKS -------------------- //
 
 a {
-    
+
 
     &:hover,
     &:focus {
-        
+
     }
 }
 
@@ -412,25 +416,25 @@ a {
 // @start LAYOUT -------------------- //
 
 div#page {
-    
+
 }
 
 div#content_wrapper {
-    
+
 }
 
 .content_pri {
-    
+
 }
 
 .content_sec {
-    
+
 }
 
     // @start HEADER & BRANDING -------------------- //
 
     #header {
-        
+
     }
 
     #branding {
@@ -459,7 +463,7 @@ div#content_wrapper {
     // @start FOOTER -------------------- //
 
     #footer {
-        
+
     }
 
     // @end FOOTER //
@@ -485,23 +489,23 @@ div#content_wrapper {
             display:block;
         }
     }
-    
+
     // @end HORIZONTAL CLASS //
-    
+
     // @start PRIMARY NAVIGATION -------------------- //
-    
+
     ul#nav_pri {
-        
+
 
         li {
-            
+
         }
         a {
-            
+
 
             &:hover,
             &:focus {
-                
+
             }
         }
     }

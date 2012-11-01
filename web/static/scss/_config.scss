@@ -13,7 +13,6 @@
 //      - EM CALC
 //  - MIXINS
 //      - SPRITE BACKGROUND
-//      - BORDER RADIUS
 //      - LINEAR GRADIENT
 //      - MICRO CLEARFIX
 //      - INLINE BLOCK
@@ -105,13 +104,12 @@
             @warn "sprite-bg can't find '#{$crop}' in $sprite";
         }
         background-image:url("/static/images/icons/sprite.png");
-        background-position-x: ($x * 1px);
-        background-position-y: ((($i - 1) * ($spritegrid * -1px)) + $y);
+        background-position: ($x * 1px) ((($i - 1) * ($spritegrid * -1px)) + $y);
         background-repeat:no-repeat;
         @if $hover {
             &:hover,
-            &:focus {        
-                background-position-x: (($spritegrid * -1px) + ($x * 1px));
+            &:focus {
+                background-position: (($spritegrid * -1px) + ($x * 1px)) ((($i - 1) * ($spritegrid * -1px)) + $y);
             }
         }
         .svg & {
@@ -120,15 +118,6 @@
     }
 
     // @end SPRITE BACKGROUND //
-
-    // @start BORDER RADIUS -------------------- //
-
-    @mixin border-radius($radii) {
-                border-radius:$radii;
-        -webkit-border-radius:$radii;
-    }
-
-    // @end BORDER RADIUS //
 
     // @start INLINE BLOCK (http://bit.ly/thoughtbot-bourbon-inline-block) -------------------- //
 

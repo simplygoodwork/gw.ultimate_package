@@ -30,7 +30,7 @@ don't have all of our Git history.
 4. Point your web server to the `/web` folder
 
 ### Installing SASS
-1. **Install**: Run `gem install sass --pre` from the terminal
+1. **Install**: Run `gem install sass` from the terminal
 2. **Enable**: Run `sass --watch web/static/scss:web/static/css --style expanded`
 from the terminal within your project directory
 
