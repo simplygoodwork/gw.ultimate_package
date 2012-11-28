@@ -1,4 +1,4 @@
-![The Ultimate Package](https://github.com/erskinedesign/ed.ultimate_package/raw/master/web/static/images/branding/branding.png "The Ultimate Package")
+![The Ultimate Package](https://github.com/erskinedesign/ed.ultimate_package/raw/master/public/static/images/branding/branding.png "The Ultimate Package")
 # The Ultimate Package
 [![Build Status](https://secure.travis-ci.org/erskinedesign/ed.ultimate_package.png?branch=master)](http://travis-ci.org/erskinedesign/ed.ultimate_package)
 
@@ -27,11 +27,11 @@ You can use `screen-prototype.scss` for prototyping and `screen.scss` for produc
 don't have all of our Git history.
 2. Install [Composer][] `curl -s http://getcomposer.org/installer | php`
 3. Install the requirements `php composer.phar install`
-4. Point your web server to the `/web` folder
+4. Point your web server to the `/public` folder
 
 ### Installing SASS
 1. **Install**: Run `gem install sass` from the terminal
-2. **Enable**: Run `sass --watch web/static/scss:web/static/css --style expanded`
+2. **Enable**: Run `sass --watch public/static/scss:public/static/css --style expanded`
 from the terminal within your project directory
 
 ## Not designed for production!
@@ -45,7 +45,7 @@ The project is currently maintained by [the team at Erskine Design][]. The origi
 ## License
 The Ultimate Package is Copyright &copy; 2012 [Erskine Design][] and is licensed under the [Creative Commons 3.0][] license.
 
-<a style="float:right;" href="http://gridpak.com/"><img src="https://github.com/erskinedesign/ed.ultimate_package/raw/master/web/static/images/branding/badge-gridpak.png"/></a>
+<a style="float:right;" href="http://gridpak.com/"><img src="https://github.com/erskinedesign/ed.ultimate_package/raw/master/public/static/images/branding/badge-gridpak.png"/></a>
 
 [Erskine Design]: http://erskinedesign.com/
 [Twig template engine]: http://twig.sensiolabs.org/
