@@ -34,6 +34,10 @@ don't have all of our Git history.
 2. **Enable**: Run `sass --watch web/static/scss:web/static/css --style expanded`
 from the terminal within your project directory
 
+### CoffeeScript
+1. **Install**: Refer to the [CoffeeScript][] website for installation instructions
+1. **Enable**: Run `coffee --watch --compile --bare web/static/js/EDJ.coffee`
+
 ## Not designed for production!
 This codebase is designed solely for development usage, we __strongly__
 advise you do not use it in production. The routing is as basic as
@@ -50,6 +54,7 @@ The Ultimate Package is Copyright &copy; 2012 [Erskine Design][] and is licensed
 [Erskine Design]: http://erskinedesign.com/
 [Twig template engine]: http://twig.sensiolabs.org/
 [SASS]: http://sass-lang.com/
+[CoffeeScript]: http://coffeescript.org/#installation
 [Composer]: http://getcomposer.org/
 
 [the team at Erskine Design]: https://twitter.com/erskinedesign/team/members
