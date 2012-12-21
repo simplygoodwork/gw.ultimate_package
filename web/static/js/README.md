@@ -22,7 +22,7 @@ this imaginary slideshow:
             return @$slides.length > 0
 
         init: =>
-            $slides.slideshowPlugin {parameter: 'param'}
+            @$slides.slideshowPlugin {parameter: 'param'}
 
 In `run` we've cached `this.$slides` and then returned `true` only if there
 are 1 or more list items within the `.slides` class. In `init` we then
