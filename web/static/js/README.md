@@ -12,17 +12,17 @@ method which will only execute if `run` validates as true. A good example is
 this imaginary slideshow:
 
     @slideshow =
-    ###
-    Makes a slideshow from several list items
-    ###
-    $slides: {}
+        ###
+        Makes a slideshow from several list items
+        ###
+        $slides: {}
 
-    run: =>
-       @$slides = $(".slides li")
-        return @$slides.length > 0
+        run: =>
+           @$slides = $(".slides li")
+            return @$slides.length > 0
 
-    init: =>
-        $slides.slideshowPlugin {parameter: 'param'}
+        init: =>
+            $slides.slideshowPlugin {parameter: 'param'}
 
 In `run` we've cached `this.$slides` and then returned `true` only if there
 are 1 or more list items within the `.slides` class. In `init` we then
