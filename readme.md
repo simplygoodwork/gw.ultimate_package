@@ -57,6 +57,7 @@ The Ultimate Package is Copyright &copy; 2012 [Erskine Design][] and is licensed
 [Twig template engine]: http://twig.sensiolabs.org/
 [Composer]: http://getcomposer.org/
 [Node]: https://github.com/joyent/node/wiki/Installing-Node.js-via-package-manager
+[NPM]: https://npmjs.org/
 [grunt]: https://github.com/gruntjs/grunt/wiki/Installing-grunt
 
 [the team at Erskine Design]: https://twitter.com/erskinedesign/team/members
