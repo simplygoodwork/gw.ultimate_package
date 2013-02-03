@@ -8,6 +8,20 @@
     "type": "git",
     "url": "git://github.com/linssen/ed.ultimate_package.git"
   },
+  "contributors": [
+    {
+      "name": "Garrett Winder",
+      "website": "http://garrettwinder.com/"
+    },
+    {
+      "name": "Chris Rowe",
+      "website": "http://chrisrowe.net/"
+    },
+    {
+      "name": "Wil Linssen",
+      "website": "http://linssen.me/"
+    }
+  ],
   "licenses": [
     {
       "type": "Creative Commons 3.0",
