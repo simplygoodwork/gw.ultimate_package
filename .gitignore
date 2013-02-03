@@ -4,5 +4,7 @@
 
 composer.lock
 /vendor
-/web/static/css/
-/web/static/js/EDJ.js
+/public/static/css/
+/public/static/js/EDJ.js
+/public/static/js/dist/
+/node_modules/
