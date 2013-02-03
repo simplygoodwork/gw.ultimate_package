@@ -52,9 +52,18 @@ module.exports = (grunt) ->
                     dest: "<%= paths.static %>css/screen.css"
                 ]
 
+        watch:
+            compile:
+                files: [
+                    "<%= paths.static %>scss/*"
+                    "<%= paths.static %>js/*.coffee"
+                ]
+                tasks: ["coffee", "sass", "concat", "uglify"]
+
         grunt.loadNpmTasks "grunt-contrib-sass"
         grunt.loadNpmTasks "grunt-contrib-coffee"
         grunt.loadNpmTasks "grunt-contrib-concat"
         grunt.loadNpmTasks "grunt-contrib-uglify"
+        grunt.loadNpmTasks "grunt-contrib-watch"
 
         grunt.registerTask "default", ["coffee", "sass", "concat", "uglify"]
