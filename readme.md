@@ -19,24 +19,26 @@ The app will render your template directly from the url, so if you go to
 You can use `screen-prototype.scss` for prototyping and `screen.scss` for production work.
 
 ## Requirements and setup
-* A __PHP >= 5.3__ web server to interpret the PHP files in the package
-* [SASS][] >= 3.2.0.alpha.261 - Stylesheet language
+* [Node][]
+* [NPM][]
+* [grunt][]
+* [Composer][]
 
 ### Installing the Ultimate Package
 1. Clone the repository, `git clone git://github.com/erskinedesign/ed.ultimate_package.git` or probably better still - [download it][download] so you
 don't have all of our Git history.
-2. Install [Composer][] `curl -s http://getcomposer.org/installer | php`
-3. Install the requirements `php composer.phar install`
-4. Point your web server to the `/public` folder
+1. Install [Composer][] `curl -s http://getcomposer.org/installer | php`
+1. Install the PHP requirements `php composer.phar install`
+1. Install [Node][] and NPM
+1. Install grunt cli `npm install -g grunt-cli`
+1. Install grunt packages `npm install` the packages are defined in `packages.json` if you're nosy
+1. Compile the Coffee Script and SASS and run the JS unit tests `grunt`
+1. Point your web server to the `/public` folder
 
-### Installing SASS
-1. **Install**: Run `gem install sass` from the terminal
-2. **Enable**: Run `sass --watch public/static/scss:public/static/css --style expanded`
-from the terminal within your project directory
+## Watching for changes and compiling Coffee Script / SASS
+Grunt watch is a required package which allows you to watch for changes to your SASS and Coffee Script
 
-### Coffee Script
-1. **Install**: Refer to the [Coffee Script][] website for installation instructions
-1. **Enable**: Run `coffee --watch --compile --bare web/static/js/EDJ.coffee`
+    grunt watch
 
 ## Not designed for production!
 This codebase is designed solely for development usage, we __strongly__
@@ -53,9 +55,9 @@ The Ultimate Package is Copyright &copy; 2012 [Erskine Design][] and is licensed
 
 [Erskine Design]: http://erskinedesign.com/
 [Twig template engine]: http://twig.sensiolabs.org/
-[SASS]: http://sass-lang.com/
-[Coffee Script]: http://coffeescript.org/#installation
 [Composer]: http://getcomposer.org/
+[Node]: https://github.com/joyent/node/wiki/Installing-Node.js-via-package-manager
+[grunt]: https://github.com/gruntjs/grunt/wiki/Installing-grunt
 
 [the team at Erskine Design]: https://twitter.com/erskinedesign/team/members
 [Greg Wood]: http://gregorywood.co.uk/
