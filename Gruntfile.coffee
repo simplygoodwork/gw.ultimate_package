@@ -5,7 +5,6 @@ module.exports = (grunt) ->
     """
     STATIC_PATH = "./public/static/"
     JS_PATH = "#{STATIC_PATH}js/"
-    CSS_PATH = "#{STATIC_PATH}css/"
 
     grunt.initConfig
 
@@ -49,8 +48,16 @@ module.exports = (grunt) ->
                 options:
                     bare: true
 
+        sass:
+            compile:
+                files: [
+                    src: "#{STATIC_PATH}scss/screen.scss"
+                    dest: "#{STATIC_PATH}css/screen.css"
+                ]
+
+        grunt.loadNpmTasks "grunt-contrib-sass"
         grunt.loadNpmTasks "grunt-contrib-coffee"
         grunt.loadNpmTasks "grunt-contrib-concat"
         grunt.loadNpmTasks "grunt-contrib-uglify"
 
-        grunt.registerTask "default", ["coffee", "concat", "uglify"]
+        grunt.registerTask "default", ["coffee", "concat", "uglify", "sass"]

@@ -6,7 +6,7 @@
   "homepage": "https://github.com/erskinedesign/ed.ultimate_package",
   "repository": {
     "type": "git",
-    "url": "git://github.com/erskinedesign/ed.ultimate_package.git"
+    "url": "git://github.com/linssen/ed.ultimate_package.git"
   },
   "licenses": [
     {
@@ -20,10 +20,6 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/linssen/ed.ultimate_package.git"
   },
   "keywords": [
     "html"
@@ -40,6 +36,7 @@
     "grunt-contrib-nodeunit": "~0.1.0",
     "grunt-contrib-coffee": "~0.4.0",
     "grunt-contrib-concat": "~0.1.2rc6",
-    "grunt-contrib-uglify": "~0.1.1rc6"
+    "grunt-contrib-uglify": "~0.1.1rc6",
+    "grunt-contrib-sass": "~0.2.2rc7"
   }
 }
