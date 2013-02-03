@@ -1,23 +1,20 @@
 module.exports = (grunt) ->
 
-    """
-    Static vars
-    """
-    STATIC_PATH = "./public/static/"
-    JS_PATH = "#{STATIC_PATH}js/"
-
     grunt.initConfig
 
         pkg: grunt.file.readJSON "package.json"
 
+        paths:
+            static: "./public/static/"
+
         concat:
             dist:
                 src: [
-                    "#{JS_PATH}lib/jquery/jquery.js"
-                    "#{JS_PATH}lib/modernizr/modernizr.js"
-                    "#{JS_PATH}EDJ.js"
+                    "<%= paths.static %>js/lib/jquery/jquery.js"
+                    "<%= paths.static %>js/lib/modernizr/modernizr.js"
+                    "<%= paths.static %>js/EDJ.js"
                 ]
-                dest: "#{JS_PATH}dist/<%= pkg.name %>.js"
+                dest: "<%= paths.static %>js/dist/<%= pkg.name %>.js"
 
         uglify:
             options:
@@ -35,15 +32,15 @@ module.exports = (grunt) ->
                 preserveComments: false
             dist:
                 files: [
-                    src: "#{JS_PATH}dist/<%= pkg.name %>.js"
-                    dest: "#{JS_PATH}dist/<%= pkg.name %>.min.js"
+                    src: "<%= paths.static %>js/dist/<%= pkg.name %>.js"
+                    dest: "<%= paths.static %>js/dist/<%= pkg.name %>.min.js"
                 ]
 
         coffee:
             compile:
                 files: [
-                    src: "#{JS_PATH}EDJ.coffee"
-                    dest: "#{JS_PATH}EDJ.js"
+                    src: "<%= paths.static %>js/EDJ.coffee"
+                    dest: "<%= paths.static %>js/EDJ.js"
                 ]
                 options:
                     bare: true
@@ -51,8 +48,8 @@ module.exports = (grunt) ->
         sass:
             compile:
                 files: [
-                    src: "#{STATIC_PATH}scss/screen.scss"
-                    dest: "#{STATIC_PATH}css/screen.css"
+                    src: "<%= paths.static %>scss/screen.scss"
+                    dest: "<%= paths.static %>css/screen.css"
                 ]
 
         grunt.loadNpmTasks "grunt-contrib-sass"
@@ -60,4 +57,4 @@ module.exports = (grunt) ->
         grunt.loadNpmTasks "grunt-contrib-concat"
         grunt.loadNpmTasks "grunt-contrib-uglify"
 
-        grunt.registerTask "default", ["coffee", "concat", "uglify", "sass"]
+        grunt.registerTask "default", ["coffee", "sass", "concat", "uglify"]
