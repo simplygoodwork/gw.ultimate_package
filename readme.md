@@ -32,11 +32,11 @@ don't have all of our Git history.
 1. Install [Node][] and NPM
 1. Install grunt cli `npm install -g grunt-cli`
 1. Install grunt packages `npm install` the packages are defined in `packages.json` if you're nosy
-1. Compile the Coffee Script and SASS and run the JS unit tests `grunt`
+1. Compile the CoffeeScript and Sass and run the JS unit tests `grunt`
 1. Point your web server to the `/public` folder
 
-## Watching for changes and compiling Coffee Script / SASS
-Grunt watch is a required package which allows you to watch for changes to your SASS and Coffee Script
+## Watching for changes and compiling CoffeeScript / Sass
+Grunt watch is a required package which allows you to watch for changes to your Sass and CoffeeScript
 
     grunt watch
 
