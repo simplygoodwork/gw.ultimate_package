@@ -60,10 +60,14 @@ module.exports = (grunt) ->
                 ]
                 tasks: ["coffee", "sass", "concat", "uglify"]
 
+        qunit:
+            dist: ["<%= paths.static %>js/test/*.html"]
+
         grunt.loadNpmTasks "grunt-contrib-sass"
         grunt.loadNpmTasks "grunt-contrib-coffee"
         grunt.loadNpmTasks "grunt-contrib-concat"
         grunt.loadNpmTasks "grunt-contrib-uglify"
         grunt.loadNpmTasks "grunt-contrib-watch"
+        grunt.loadNpmTasks "grunt-contrib-qunit"
 
         grunt.registerTask "default", ["coffee", "sass", "concat", "uglify"]
