@@ -21,7 +21,9 @@ class EDJ
         ###
         if @settings.debug and console?
             # Log each arg separately
-            console.log message for message in args
+            return console.log message for message in args
+
+        return false
 
     @go_go_go = () =>
         ###
