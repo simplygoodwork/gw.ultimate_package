@@ -11,9 +11,6 @@ class EDJ
         # Extend the settings object with any vars passed in
         $.extend(@constructor.settings, settings)
 
-        # Cache the body for use later
-        @constructor.$body = $("body")
-
         # Fire all functions that eval
         @constructor.go_go_go()
 
@@ -45,18 +42,19 @@ class EDJ
         Sets up keyboard controls for skipping to navigation
         -----------------------------------------------------------------------
         ###
-        run: true
+        $accessLinks: {}
+
+        run: =>
+            @$accessLinks = $("#nav_access a")
+            return @$accessLinks.length > 0
 
         init: =>
-            # Cache links
-            $access_links = @$body.find("#nav_access a")
-
             # Add focus / blur class on those actions
-            $access_links.on("focus blur", ->
+            @$accessLinks.on("focus blur", ->
                 $(this).toggleClass("focus")
             )
         
             # Give the anchor"s target focus on click
-            $access_links.on("click", ->
+            @$accessLinks.on("click", ->
                 $($(this).attr("href")).focus()
             )
