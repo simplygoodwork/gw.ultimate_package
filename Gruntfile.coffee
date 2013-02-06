@@ -70,4 +70,4 @@ module.exports = (grunt) ->
         grunt.loadNpmTasks "grunt-contrib-watch"
         grunt.loadNpmTasks "grunt-contrib-qunit"
 
-        grunt.registerTask "default", ["coffee", "sass", "concat", "uglify"]
+        grunt.registerTask "default", ["coffee", "sass", "concat", "uglify", "qunit"]
