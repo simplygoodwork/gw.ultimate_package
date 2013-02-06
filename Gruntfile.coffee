@@ -58,7 +58,7 @@ module.exports = (grunt) ->
                     "<%= paths.static %>scss/*"
                     "<%= paths.static %>js/*.coffee"
                 ]
-                tasks: ["coffee", "sass", "concat", "uglify"]
+                tasks: ["coffee", "sass", "concat"]
 
         qunit:
             dist: ["<%= paths.static %>js/test/*.html"]
