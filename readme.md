@@ -25,8 +25,8 @@ You can use `screen-prototype.scss` for prototyping and `screen.scss` for produc
 * [Composer][]
 
 ### Installing the Ultimate Package
-1. Clone the repository, `git clone git://github.com/erskinedesign/ed.ultimate_package.git` or probably better still - [download it][download] so you
-don't have all of our Git history.
+1. Clone the repository, `git clone git://github.com/erskinedesign/ed.ultimate_package.git`
+1. Update the submodules `git submodule init && git submodule update`
 1. Install [Composer][] `curl -s http://getcomposer.org/installer | php`
 1. Install the PHP requirements `php composer.phar install`
 1. Install [Node][] and NPM
