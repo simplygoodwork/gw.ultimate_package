@@ -1,8 +1,9 @@
-test( "Set up test", function() {
-    equal(typeof(EDJ), "function", "EDJ has not been instantiated");
-    equal(typeof(EDJ.settings), "object", "EDJ has no settings");
-});
+test("Set up test", =>
+    equal(typeof EDJ, "function", "EDJ has not been instantiated")
+    equal(typeof EDJ.settings, "object", "EDJ has no settings")
+)
 
+###
 test("Logging", function() {
 
     equal(typeof(EDJ.log), "function", "Can't find the log method");
@@ -31,3 +32,4 @@ test("Navigation", function() {
 
     $accessLinks.remove();
 });
+###

@@ -8,13 +8,12 @@ module.exports = (grunt) ->
             static: "./public/static/"
 
         concat:
-            dist:
-                src: [
-                    "<%= paths.static %>js/lib/jquery/jquery.js"
-                    "<%= paths.static %>js/lib/modernizr/modernizr.js"
-                    "<%= paths.static %>js/EDJ.js"
-                ]
+            scripts:
+                src: "<%= paths.static %>js/**/**/*.js"
                 dest: "<%= paths.static %>js/dist/<%= pkg.name %>.js"
+            styles:
+               src: "<%= paths.static %>css/**/*.css"
+               dest: "<%= paths.static %>css/dist/<%= pkg.name %>.css"
 
         uglify:
             options:
@@ -30,14 +29,21 @@ module.exports = (grunt) ->
                 mangle: false
                 compress: true
                 preserveComments: false
-            dist:
+            scripts:
                 files: [
                     src: "<%= paths.static %>js/dist/<%= pkg.name %>.js"
                     dest: "<%= paths.static %>js/dist/<%= pkg.name %>.min.js"
                 ]
 
         coffee:
-            compile:
+            glob_to_multiple:
+                expand: true
+                cwd: "<%= paths.static %>js/"
+                src: ["**/*.coffee", "!EDJ.coffee", "!test/*.coffee"]
+                dest: "<%= paths.static %>js/"
+                ext: ".js"
+
+            edj:
                 files: [
                     src: "<%= paths.static %>js/EDJ.coffee"
                     dest: "<%= paths.static %>js/EDJ.js"
@@ -45,20 +51,30 @@ module.exports = (grunt) ->
                 options:
                     bare: true
 
+            tests:
+                expand: true
+                cwd: "<%= paths.static %>js/test/"
+                src: "*.coffee"
+                dest: "<%= paths.static %>js/test/"
+                ext: ".test.js"
+                options:
+                    bare: true
+
         sass:
-            compile:
-                files: [
-                    src: "<%= paths.static %>scss/screen.scss"
-                    dest: "<%= paths.static %>css/screen.css"
-                ]
+            glob_to_multiple:
+                expand: true
+                cwd: "<%= paths.static %>scss/"
+                src: ["**/*.scss", "!**/_*.scss"]
+                dest: "<%= paths.static %>css/"
+                ext: ".css"
 
         watch:
             compile:
                 files: [
-                    "<%= paths.static %>scss/*"
-                    "<%= paths.static %>js/*.coffee"
+                    "<%= paths.static %>scss/**/*.scss"
+                    "<%= paths.static %>js/**/*.js"
                 ]
-                tasks: ["coffee", "sass", "concat"]
+                tasks: ["sass", "concat"]
 
         qunit:
             dist: ["<%= paths.static %>js/test/*.html"]
@@ -71,3 +87,4 @@ module.exports = (grunt) ->
         grunt.loadNpmTasks "grunt-contrib-qunit"
 
         grunt.registerTask "default", ["coffee", "sass", "concat", "uglify", "qunit"]
+        grunt.registerTask "buildDev", ["coffee", "sass", "qunit"]

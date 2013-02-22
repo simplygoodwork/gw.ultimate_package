@@ -7,4 +7,5 @@ composer.lock
 /public/static/css/
 /public/static/js/EDJ.js
 /public/static/js/dist/
+/public/static/js/test/*.js
 /node_modules/
