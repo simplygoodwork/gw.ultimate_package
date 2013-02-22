@@ -72,9 +72,9 @@ module.exports = (grunt) ->
             compile:
                 files: [
                     "<%= paths.static %>scss/**/*.scss"
-                    "<%= paths.static %>js/**/*.js"
+                    "<%= paths.static %>js/**/*.coffee"
                 ]
-                tasks: ["sass", "concat"]
+                tasks: ["sass", "coffee", "concat"]
 
         qunit:
             dist: ["<%= paths.static %>js/test/*.html"]
