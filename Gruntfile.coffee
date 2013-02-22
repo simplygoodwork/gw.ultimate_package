@@ -9,7 +9,7 @@ module.exports = (grunt) ->
 
         concat:
             scripts:
-                src: ["<%= paths.static %>js/**/**/*.js", "!<%= paths.static %>js/dist/*.js"]
+                src: ["<%= paths.static %>js/**/**/*.js", "!<%= paths.static %>js/dist/*.js", "!<%= paths.static %>js/test/**/*.js"]
                 dest: "<%= paths.static %>js/dist/<%= pkg.name %>.js"
             styles:
                src: "<%= paths.static %>css/**/*.css"
