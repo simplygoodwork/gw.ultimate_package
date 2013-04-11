@@ -21,7 +21,7 @@
 // @start BLOCK -------------------- //
 
 .block {
-    
+
 }
 
 // @end BLOCK //
@@ -47,19 +47,19 @@
         }
 
         a {
-            
+
 
             &:hover,
             &:focus {
-                
+
             }
         }
 
         .item_meta {
-            
+
         }
         .item_content {
-            
+
         }
 
     }
@@ -69,7 +69,7 @@
     // @start BLOCK LISTING (Base: item_listing) -------------------- //
 
     .block_listing {
-        
+
     }
 
     // @end BLOCK LISTING //
@@ -77,7 +77,7 @@
     // @start ARTICLE LISTING (Base: item_listing) -------------------- //
 
     .article_listing {
-        
+
     }
 
     // @end ARTICLE LISTING //
@@ -90,16 +90,16 @@
 
 .cta_button {
     clear:both;
-    text-align:center;
 
     a,
     button {
-        display:block;
+        @include inline-block;
+        text-align:center;
         text-decoration:none;
 
         &:hover,
         &:focus {
-            
+
         }
     } // .cta_button a, .cta_button button
 

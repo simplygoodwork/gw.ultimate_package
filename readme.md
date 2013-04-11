@@ -13,6 +13,8 @@ The package is a barebones framework to help you rapidly develop your projects.
 Create templates using the [Twig template engine][] in `/templates` as you need
 them and use `/templates/elements.html` to check your styles.
 
+If you run into any problems, read through the [FAQs][faqs] and if that doesn't help, then please [raise an issue][issues].
+
 The app will render your template directly from the url, so if you go to
 `/my/page.html` it will render the template in `/templates/my/page.html`.
 
@@ -54,6 +56,8 @@ The Ultimate Package is Copyright &copy; 2012 [Erskine Design][] and is licensed
 <a style="float:right;" href="http://gridpak.com/"><img src="https://github.com/erskinedesign/ed.ultimate_package/raw/master/public/static/images/branding/badge-gridpak.png"/></a>
 
 [Erskine Design]: http://erskinedesign.com/
+[faqs]: https://github.com/erskinedesign/ed.ultimate_package/wiki/FAQs
+[issues]: https://github.com/erskinedesign/ed.ultimate_package/issues
 [Twig template engine]: http://twig.sensiolabs.org/
 [Composer]: http://getcomposer.org/
 [Node]: https://github.com/joyent/node/wiki/Installing-Node.js-via-package-manager

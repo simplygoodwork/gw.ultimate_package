@@ -1,6 +1,7 @@
 # Ultimate Package specific
 !.gitignore
 !.htaccess
+.sass-cache
 
 composer.lock
 /vendor
