@@ -1,33 +1,37 @@
-Using the EDJ
+Writing JavaScript
 ==========================================
 
-The Erskine Design Javascript (EDJ) object is used to speed up JS and cut out 
-unessesary function calls. You can add functions to call on page load herein
-and the EDJ will decide if they should be run, as well as caching jQuery
-selected items for further use later.
+When writing standard JavaScript it's important to adhere to [Douglas
+Crockford's code conventions](http://javascript.crockford.com/code.html).
 
-To create a function to run on load, you need to first determine if it's
-valid with the `run` method / boolean. You then put your code in the `init`
-method which will only execute if `run` validates as true. A good example is
-this imaginary slideshow:
+It's preferred that you write in CoffeeScript, but not required. All
+CoffeeScript is compiled from `/public/static/scripts/myscript.coffee` to
+`/public/static/scripts/build/myscript.js` all scripts (except Modernizr) are
+then concatinated into `public/static/scripts/dist/package_name.js` or
+`package_name.min.js` if you're running for production.
 
-    @slideshow =
-        ###
-        Makes a slideshow from several list items
-        ###
-        $slides: {}
+Testing
+------------------------------------------
 
-        run: =>
-           @$slides = $(".slides li")
-            return @$slides.length > 0
+[Qunit](http://qunitjs.com/) is bundled for testing, and it's recommended that
+all scripts have tests attached. There is a bare bones example included for
+access links, but it's recommended you use a jQuery plugin for similar
+functionality. Here's a [boilerplate](http://jqueryboilerplate.com/) to get
+you started.
 
-        init: =>
-            @$slides.slideshowPlugin {parameter: 'param'}
+Settings object
+------------------------------------------
 
-In `run` we've cached `this.$slides` and then returned `true` only if there
-are 1 or more list items within the `.slides` class. In `init` we then
-execute our slideshow stuff.
+There is a global settings object that you can pass information from the server
+to. It's used for things like urls to static, or usernames etc. for async
+work. Since it's global, you can amend it anywhere, but it's instantiated in
+the `base.html` template thus:
 
-While there is some overhead in `run`, that is offset by never needing to
-execute `init` and that benchmarks at roughly 300% performance increase in
-testing.
+    var settings = settings || {};
+
+You could then add a username to that with
+
+    settings.username = 'ceejeemccoolguy';
+
+And hey presto, global username available to all scripts (unless you override
+the settings variable of course).
