@@ -34,7 +34,12 @@ module.exports = (grunt) ->
                 preserveComments: false
             dist:
                 files: [
-                    src: "<%= paths.static %>scripts/dist/<%= pkg.name %>.js"
+                    src: [
+                        "<%= paths.static %>scripts/lib/jquery/jquery.js"
+                        "<%= paths.static %>scripts/lib/**/*.js"
+                        "<%= paths.static %>scripts/dist/*.js"
+                        "!<%= paths.static %>scripts/lib/modernizr/modernizr.js"
+                    ]
                     dest: "<%= paths.static %>scripts/dist/<%= pkg.name %>.min.js"
                 ]
 
