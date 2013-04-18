@@ -9,3 +9,4 @@ node_modules
 /public/static/scripts/build
 /public/static/scripts/dist
 /public/static/styles/dist
+/public/static/scripts/test/build

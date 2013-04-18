@@ -52,7 +52,7 @@ module.exports = (grunt) ->
                 expand: true
                 cwd: "<%= paths.static %>scripts/test/"
                 src: "*.coffee"
-                dest: "<%= paths.static %>scripts/test/"
+                dest: "<%= paths.static %>scripts/test/build/"
                 ext: ".test.js"
                 options:
                     bare: true
@@ -86,6 +86,7 @@ module.exports = (grunt) ->
                 "<%= paths.static %>scripts/**/*.js"
                 "!<%= paths.static %>scripts/build/*.js"
                 "!<%= paths.static %>scripts/dist/*.js"
+                "!<%= paths.static %>scripts/test/build/*.js"
             ]
             tasks: ["sass:dev", "coffee", "concat"]
 
