@@ -131,6 +131,17 @@
 
     // @end INLINE BLOCK //
 
+    // @start PREFIXER --------------------
+
+    @mixin prefixer($property, $value) {
+    @each $prefix in webkit moz ms o {
+            -#{$prefix}-#{$property}: $value;
+        }
+        #{$property}: $value;
+    }
+
+    // @end PREFIXER //
+
     // @start LINEAR GRADIENT -------------------- //
 
     @mixin gradient($from, $to, $fallback: $to) {
@@ -160,16 +171,6 @@
     }
 
     // @end MICRO CLEARFIX //
-
-    // @start BOX SIZING -------------------- //
-
-    @mixin box_sizing($value: border-box) {
-        -moz-box-sizing:$value;
-        -webkit-box-sizing:$value;
-        box-sizing:$value;
-    }
-
-    // @end BOX SIZING //
 
 // @end MIXINS //
 

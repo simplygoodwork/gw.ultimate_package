@@ -278,7 +278,7 @@ video {
     input[type="text"],
     input[type="email"],
     textarea {
-        @include box-sizing;
+        @include prefixer(box-sizing, border-box);
         border:1px solid #DDD;
         padding:calc-em(4.5);
         width:100%;
