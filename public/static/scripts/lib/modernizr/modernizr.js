@@ -1,5 +1,5 @@
-/* Modernizr 2.5.3 (Custom Build) | MIT & BSD
- * Build: http://www.modernizr.com/download/#-svg-touch-shiv-cssclasses-teststyles-prefixes
+/* Modernizr 2.6.2 (Custom Build) | MIT & BSD
+ * Build: http://modernizr.com/download/#-svg-touch-shiv-cssclasses-teststyles-prefixes
  */
 ;
 
@@ -7,7 +7,7 @@
 
 window.Modernizr = (function( window, document, undefined ) {
 
-    var version = '2.5.3',
+    var version = '2.6.2',
 
     Modernizr = {},
 
@@ -37,15 +37,15 @@ window.Modernizr = (function( window, document, undefined ) {
 
     slice = classes.slice,
 
-    featureName, 
+    featureName,
 
 
     injectElementWithStyles = function( rule, callback, nodes, testnames ) {
 
-      var style, ret, node,
+      var style, ret, node, docOverflow,
           div = document.createElement('div'),
-                body = document.body, 
-                fakeBody = body ? body : document.createElement('body');
+                body = document.body,
+                fakeBody = body || document.createElement('body');
 
       if ( parseInt(nodes, 10) ) {
                       while ( nodes-- ) {
@@ -55,30 +55,38 @@ window.Modernizr = (function( window, document, undefined ) {
           }
       }
 
-                style = ['&#173;','<style>', rule, '</style>'].join('');
+                style = ['&#173;','<style id="s', mod, '">', rule, '</style>'].join('');
       div.id = mod;
           (body ? div : fakeBody).innerHTML += style;
       fakeBody.appendChild(div);
-      if(!body){
-                fakeBody.style.background = "";
+      if ( !body ) {
+                fakeBody.style.background = '';
+                fakeBody.style.overflow = 'hidden';
+          docOverflow = docElement.style.overflow;
+          docElement.style.overflow = 'hidden';
           docElement.appendChild(fakeBody);
       }
 
       ret = callback(div, rule);
-        !body ? fakeBody.parentNode.removeChild(fakeBody) : div.parentNode.removeChild(div);
+        if ( !body ) {
+          fakeBody.parentNode.removeChild(fakeBody);
+          docElement.style.overflow = docOverflow;
+      } else {
+          div.parentNode.removeChild(div);
+      }
 
       return !!ret;
 
     },
-    _hasOwnProperty = ({}).hasOwnProperty, hasOwnProperty;
+    _hasOwnProperty = ({}).hasOwnProperty, hasOwnProp;
 
     if ( !is(_hasOwnProperty, 'undefined') && !is(_hasOwnProperty.call, 'undefined') ) {
-      hasOwnProperty = function (object, property) {
+      hasOwnProp = function (object, property) {
         return _hasOwnProperty.call(object, property);
       };
     }
     else {
-      hasOwnProperty = function (object, property) { 
+      hasOwnProp = function (object, property) {
         return ((property in object) && is(object.constructor.prototype[property], 'undefined'));
       };
     }
@@ -100,7 +108,7 @@ window.Modernizr = (function( window, document, undefined ) {
 
               var F = function(){};
               F.prototype = target.prototype;
-              var self = new F;
+              var self = new F();
 
               var result = target.apply(
                   self,
@@ -159,81 +167,100 @@ window.Modernizr = (function( window, document, undefined ) {
         }
         return false;
     }
-
-
-    var testBundle = (function( styles, tests ) {
-        var style = styles.join(''),
-            len = tests.length;
-
-        injectElementWithStyles(style, function( node, rule ) {
-            var style = document.styleSheets[document.styleSheets.length - 1],
-                                                    cssText = style ? (style.cssRules && style.cssRules[0] ? style.cssRules[0].cssText : style.cssText || '') : '',
-                children = node.childNodes, hash = {};
-
-            while ( len-- ) {
-                hash[children[len].id] = children[len];
-            }
-
-                       Modernizr['touch'] = ('ontouchstart' in window) || window.DocumentTouch && document instanceof DocumentTouch || (hash['touch'] && hash['touch'].offsetTop) === 9; 
-                                }, len, tests);
-
-    })([
-                       ,['@media (',prefixes.join('touch-enabled),('),mod,')',
-                                '{#touch{top:9px;position:absolute}}'].join('')           ],
-      [
-                       ,'touch'                ]);
-
-
-
     tests['touch'] = function() {
-        return Modernizr['touch'];
+        var bool;
+
+        if(('ontouchstart' in window) || window.DocumentTouch && document instanceof DocumentTouch) {
+          bool = true;
+        } else {
+          injectElementWithStyles(['@media (',prefixes.join('touch-enabled),('),mod,')','{#modernizr{top:9px;position:absolute}}'].join(''), function( node ) {
+            bool = node.offsetTop === 9;
+          });
+        }
+
+        return bool;
     };
-
-
-
     tests['svg'] = function() {
         return !!document.createElementNS && !!document.createElementNS(ns.svg, 'svg').createSVGRect;
     };
     for ( var feature in tests ) {
-        if ( hasOwnProperty(tests, feature) ) {
+        if ( hasOwnProp(tests, feature) ) {
                                     featureName  = feature.toLowerCase();
             Modernizr[featureName] = tests[feature]();
 
             classes.push((Modernizr[featureName] ? '' : 'no-') + featureName);
         }
     }
+
+
+
+     Modernizr.addTest = function ( feature, test ) {
+       if ( typeof feature == 'object' ) {
+         for ( var key in feature ) {
+           if ( hasOwnProp( feature, key ) ) {
+             Modernizr.addTest( key, feature[ key ] );
+           }
+         }
+       } else {
+
+         feature = feature.toLowerCase();
+
+         if ( Modernizr[feature] !== undefined ) {
+                                              return Modernizr;
+         }
+
+         test = typeof test == 'function' ? test() : test;
+
+         if (typeof enableClasses !== "undefined" && enableClasses) {
+           docElement.className += ' ' + (test ? '' : 'no-') + feature;
+         }
+         Modernizr[feature] = test;
+
+       }
+
+       return Modernizr;
+     };
+
+
     setCss('');
     modElem = inputElem = null;
 
     ;(function(window, document) {
-
         var options = window.html5 || {};
 
-        var reSkip = /^<|^(?:button|form|map|select|textarea)$/i;
+        var reSkip = /^<|^(?:button|map|select|textarea|object|iframe|option|optgroup)$/i;
+
+        var saveClones = /^(?:a|b|code|div|fieldset|h1|h2|h3|h4|h5|h6|i|label|li|ol|p|q|span|strong|style|table|tbody|td|th|tr|ul)$/i;
 
         var supportsHtml5Styles;
+
+        var expando = '_html5shiv';
+
+        var expanID = 0;
+
+        var expandoData = {};
 
         var supportsUnknownElements;
 
       (function() {
-        var a = document.createElement('a');
+        try {
+            var a = document.createElement('a');
+            a.innerHTML = '<xyz></xyz>';
+                    supportsHtml5Styles = ('hidden' in a);
 
-        a.innerHTML = '<xyz></xyz>';
-
-            supportsHtml5Styles = ('hidden' in a);
-        supportsUnknownElements = a.childNodes.length == 1 || (function() {
-                try {
-            (document.createElement)('a');
-          } catch(e) {
-            return true;
-          }
-          var frag = document.createDocumentFragment();
-          return (
-            typeof frag.cloneNode == 'undefined' ||
-            typeof frag.createDocumentFragment == 'undefined' ||
-            typeof frag.createElement == 'undefined'
-          );
-        }());
+            supportsUnknownElements = a.childNodes.length == 1 || (function() {
+                        (document.createElement)('a');
+              var frag = document.createDocumentFragment();
+              return (
+                typeof frag.cloneNode == 'undefined' ||
+                typeof frag.createDocumentFragment == 'undefined' ||
+                typeof frag.createElement == 'undefined'
+              );
+            }());
+        } catch(e) {
+          supportsHtml5Styles = true;
+          supportsUnknownElements = true;
+        }
 
       }());        function addStyleSheet(ownerDocument, cssText) {
         var p = ownerDocument.createElement('p'),
@@ -248,59 +275,117 @@ window.Modernizr = (function( window, document, undefined ) {
         return typeof elements == 'string' ? elements.split(' ') : elements;
       }
 
-        function shivMethods(ownerDocument) {
-        var cache = {},
-            docCreateElement = ownerDocument.createElement,
-            docCreateFragment = ownerDocument.createDocumentFragment,
-            frag = docCreateFragment();
+          function getExpandoData(ownerDocument) {
+        var data = expandoData[ownerDocument[expando]];
+        if (!data) {
+            data = {};
+            expanID++;
+            ownerDocument[expando] = expanID;
+            expandoData[expanID] = data;
+        }
+        return data;
+      }
+
+        function createElement(nodeName, ownerDocument, data){
+        if (!ownerDocument) {
+            ownerDocument = document;
+        }
+        if(supportsUnknownElements){
+            return ownerDocument.createElement(nodeName);
+        }
+        if (!data) {
+            data = getExpandoData(ownerDocument);
+        }
+        var node;
+
+        if (data.cache[nodeName]) {
+            node = data.cache[nodeName].cloneNode();
+        } else if (saveClones.test(nodeName)) {
+            node = (data.cache[nodeName] = data.createElem(nodeName)).cloneNode();
+        } else {
+            node = data.createElem(nodeName);
+        }
+
+                                    return node.canHaveChildren && !reSkip.test(nodeName) ? data.frag.appendChild(node) : node;
+      }
+
+        function createDocumentFragment(ownerDocument, data){
+        if (!ownerDocument) {
+            ownerDocument = document;
+        }
+        if(supportsUnknownElements){
+            return ownerDocument.createDocumentFragment();
+        }
+        data = data || getExpandoData(ownerDocument);
+        var clone = data.frag.cloneNode(),
+            i = 0,
+            elems = getElements(),
+            l = elems.length;
+        for(;i<l;i++){
+            clone.createElement(elems[i]);
+        }
+        return clone;
+      }
+
+        function shivMethods(ownerDocument, data) {
+        if (!data.cache) {
+            data.cache = {};
+            data.createElem = ownerDocument.createElement;
+            data.createFrag = ownerDocument.createDocumentFragment;
+            data.frag = data.createFrag();
+        }
 
 
         ownerDocument.createElement = function(nodeName) {
-                                                    var node = (cache[nodeName] || (cache[nodeName] = docCreateElement(nodeName))).cloneNode();
-          return html5.shivMethods && node.canHaveChildren && !reSkip.test(nodeName) ? frag.appendChild(node) : node;
+                if (!html5.shivMethods) {
+              return data.createElem(nodeName);
+          }
+          return createElement(nodeName, ownerDocument, data);
         };
 
         ownerDocument.createDocumentFragment = Function('h,f', 'return function(){' +
           'var n=f.cloneNode(),c=n.createElement;' +
           'h.shivMethods&&(' +
                     getElements().join().replace(/\w+/g, function(nodeName) {
-              cache[nodeName] = docCreateElement(nodeName);
-              frag.createElement(nodeName);
+              data.createElem(nodeName);
+              data.frag.createElement(nodeName);
               return 'c("' + nodeName + '")';
             }) +
           ');return n}'
-        )(html5, frag);
+        )(html5, data.frag);
       }        function shivDocument(ownerDocument) {
-        var shived;
-        if (ownerDocument.documentShived) {
-          return ownerDocument;
+        if (!ownerDocument) {
+            ownerDocument = document;
         }
-        if (html5.shivCSS && !supportsHtml5Styles) {
-          shived = !!addStyleSheet(ownerDocument,
-                    'article,aside,details,figcaption,figure,footer,header,hgroup,nav,section{display:block}' +
-                    'audio{display:none}' +
-                    'canvas,video{display:inline-block;*display:inline;*zoom:1}' +
-                    '[hidden]{display:none}audio[controls]{display:inline-block;*display:inline;*zoom:1}' +
+        var data = getExpandoData(ownerDocument);
+
+        if (html5.shivCSS && !supportsHtml5Styles && !data.hasCSS) {
+          data.hasCSS = !!addStyleSheet(ownerDocument,
+                    'article,aside,figcaption,figure,footer,header,hgroup,nav,section{display:block}' +
                     'mark{background:#FF0;color:#000}'
           );
         }
         if (!supportsUnknownElements) {
-          shived = !shivMethods(ownerDocument);
-        }
-        if (shived) {
-          ownerDocument.documentShived = shived;
+          shivMethods(ownerDocument, data);
         }
         return ownerDocument;
       }        var html5 = {
 
             'elements': options.elements || 'abbr article aside audio bdi canvas data datalist details figcaption figure footer header hgroup mark meter nav output progress section summary time video',
 
-            'shivCSS': !(options.shivCSS === false),
+            'shivCSS': (options.shivCSS !== false),
 
-            'shivMethods': !(options.shivMethods === false),
+            'supportsUnknownElements': supportsUnknownElements,
+
+            'shivMethods': (options.shivMethods !== false),
 
             'type': 'default',
-            'shivDocument': shivDocument
+
+            'shivDocument': shivDocument,
+
+            createElement: createElement,
+
+            createDocumentFragment: createDocumentFragment
       };        window.html5 = html5;
 
         shivDocument(document);
