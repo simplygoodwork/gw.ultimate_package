@@ -12,7 +12,7 @@ module.exports = (grunt) ->
                 src: [
                     "<%= paths.static %>scripts/lib/jquery/jquery.js"
                     "<%= paths.static %>scripts/lib/**/*.js"
-                    "<%= paths.static %>sripts/*.js"
+                    "<%= paths.static %>scripts/*.js"
                     "<%= paths.static %>scripts/build/*.js"
                     "!<%= paths.static %>scripts/lib/modernizr/modernizr.js"
                 ]
@@ -37,7 +37,8 @@ module.exports = (grunt) ->
                     src: [
                         "<%= paths.static %>scripts/lib/jquery/jquery.js"
                         "<%= paths.static %>scripts/lib/**/*.js"
-                        "<%= paths.static %>scripts/dist/*.js"
+                        "<%= paths.static %>scripts/build/*.js"
+                        "<%= paths.static %>scripts/*.js"
                         "!<%= paths.static %>scripts/lib/modernizr/modernizr.js"
                     ]
                     dest: "<%= paths.static %>scripts/dist/<%= pkg.name %>.min.js"
