@@ -97,8 +97,8 @@
         </div> <!-- // #page -->
 
         <!-- JAVASCRIPT -->
-        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-        <script src="{{ STATIC_URL }}scripts/dist/ultimate_package.js"></script>
+
+        <script src="{{ STATIC_URL }}scripts/dist/ultimate_package.{% if not debug %}min.{% endif %}js"></script>
 
     </body>
 </html>
