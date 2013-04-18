@@ -2,14 +2,14 @@
 # The Ultimate Package
 [![Build Status](https://secure.travis-ci.org/erskinedesign/ed.ultimate_package.png?branch=master)](http://travis-ci.org/erskinedesign/ed.ultimate_package)
 
-The Ultimate Package is [Erskine Design][]'s framework for rapidly developing 
-the front-end of our projects and is under constant development and improvement 
+The Ultimate Package is [Erskine Design][]'s framework for rapidly developing
+the front-end of our projects and is under constant development and improvement
 by the team at Erskine Design, who use it daily.
 
 Please refer to the wiki for [Erskine's front-end coding standards][wiki]
 
 ## Getting started
-The package is a barebones framework to help you rapidly develop your projects. 
+The package is a barebones framework to help you rapidly develop your projects.
 Create templates using the [Twig template engine][] in `/templates` as you need
 them and use `/templates/elements.html` to check your styles.
 
@@ -21,9 +21,8 @@ The app will render your template directly from the url, so if you go to
 You can use `screen-prototype.scss` for prototyping and `screen.scss` for production work.
 
 ## Requirements and setup
-* [Node][]
-* [NPM][]
-* [grunt][]
+* [Node][] >= v0.10.0
+* [Grunt][] >= 0.4.0
 * [Composer][]
 
 ### Installing the Ultimate Package
@@ -38,7 +37,8 @@ You can use `screen-prototype.scss` for prototyping and `screen.scss` for produc
 1. Point your web server to the `/public` folder
 
 ## Watching for changes and compiling CoffeeScript / Sass
-Grunt watch is a required package which allows you to watch for changes to your Sass and CoffeeScript
+Grunt watch is a required package which allows you to watch for changes to your Sass and CoffeeScript.
+This is useful for development, because as you save your files, Grunt will recompile them for you.
 
     grunt watch
 
