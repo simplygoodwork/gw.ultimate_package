@@ -96,15 +96,24 @@ module.exports = (grunt) ->
             ]
             tasks: ["sass:dev", "coffee", "concat"]
 
+        connect:
+            server:
+                options:
+                    port: 9001
+                    base: "public"
         qunit:
-            dist: ["<%= paths.static %>scripts/test/*.html"]
+            dist:
+                options:
+                    urls: ["http://localhost:9001/static/scripts/test/index.html"]
 
         grunt.loadNpmTasks "grunt-contrib-sass"
         grunt.loadNpmTasks "grunt-contrib-coffee"
         grunt.loadNpmTasks "grunt-contrib-concat"
         grunt.loadNpmTasks "grunt-contrib-uglify"
         grunt.loadNpmTasks "grunt-contrib-watch"
+        grunt.loadNpmTasks "grunt-contrib-connect"
         grunt.loadNpmTasks "grunt-contrib-qunit"
 
         grunt.registerTask "default", ["coffee", "sass:dist", "uglify", "qunit"]
         grunt.registerTask "dev", ["coffee", "sass:dev", "concat", "qunit"]
+        grunt.registerTask "test", ["connect", "coffee", "concat", "qunit"]
