@@ -24,14 +24,15 @@ You can use `screen-prototype.scss` for prototyping and `screen.scss` for produc
 * [Node][] >= v0.10.0
 * [Grunt][] >= 0.4.0
 * [Composer][]
+ 
+1. Install [Node][] and NPM
+1. Install grunt cli `npm install -g grunt-cli`
+1. Install [Composer][] locally with `curl -s http://getcomposer.org/installer | php` or if you're on OS X you should probably use brew.
 
 ### Installing the Ultimate Package
 1. Clone the repository, `git clone git://github.com/erskinedesign/ed.ultimate_package.git`
 1. Update the submodules `git submodule init && git submodule update`
-1. Install [Composer][] `curl -s http://getcomposer.org/installer | php`
 1. Install the PHP requirements `php composer.phar install`
-1. Install [Node][] and NPM
-1. Install grunt cli `npm install -g grunt-cli`
 1. Install grunt packages `npm install` the packages are defined in `packages.json` if you're nosy
 1. Compile the CoffeeScript and Sass and run the JS unit tests `grunt`
 1. Point your web server to the `/public` folder
