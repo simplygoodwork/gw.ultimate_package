@@ -114,6 +114,6 @@ module.exports = (grunt) ->
         grunt.loadNpmTasks "grunt-contrib-connect"
         grunt.loadNpmTasks "grunt-contrib-qunit"
 
-        grunt.registerTask "default", ["coffee", "sass:dist", "uglify", "qunit"]
-        grunt.registerTask "dev", ["coffee", "sass:dev", "concat", "qunit"]
+        grunt.registerTask "default", ["connect", "coffee", "sass:dist", "uglify", "qunit"]
+        grunt.registerTask "dev", ["connect", "coffee", "sass:dev", "concat", "qunit"]
         grunt.registerTask "test", ["connect", "coffee", "concat", "qunit"]
