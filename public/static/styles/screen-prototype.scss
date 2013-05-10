@@ -42,7 +42,7 @@ body {
 }
 
     // @start ACCESSIBILITY NAVIGATION -------------------- //
-    
+
     ul#nav_access {
         list-style:none;
         margin:0;
@@ -129,7 +129,7 @@ ul {
     list-style:disc;
 
     li {
-        
+
     }
 }
 
@@ -137,12 +137,12 @@ ol {
     list-style:decimal;
 
     li {
-        
+
     }
 }
 
 dl {
-    
+
 
     dt {
         font-weight:$bold;
@@ -174,18 +174,18 @@ pre {
     font-family:monospace;
 }
 code {
-    
+
 }
 pre {
-    
+
 
     code {
-        
+
     }
 }
 
 abbr {
-    
+
 
     &:hover {
         cursor:help;
@@ -218,13 +218,13 @@ figcaption {
 }
 
 figure {
-    
+
 
     img {
-        
+
     }
     figcaption {
-        
+
     }
 }
 
@@ -239,16 +239,16 @@ video {
     // @start FORMS -------------------- //
 
     form {
-        
+
 
         dl {
-            
+
 
             dt {
-                
+
             }
             dd {
-                
+
             }
         }
 
@@ -262,11 +262,11 @@ video {
     } // form
 
     fieldset {
-        
+
     }
 
     label {
-        
+
         &.error {
             color:$pink1;
             font-size:calc-em(12);
@@ -278,7 +278,7 @@ video {
     input[type="text"],
     input[type="email"],
     textarea {
-        @include box-sizing;
+        @include prefixer(box-sizing, border-box);
         border:1px solid #DDD;
         padding:calc-em(4.5);
         width:100%;
@@ -288,11 +288,11 @@ video {
         }
     }
     textarea {
-        
+
     }
 
     form .cta_button {
-        
+
         button {
             border:0;
             cursor:pointer;
@@ -309,14 +309,14 @@ video {
     }
 
     caption {
-        
+
     }
     legend {
-        
+
     }
 
     tr {
-        
+
     }
 
     th,
@@ -324,31 +324,31 @@ video {
         padding:calc-em(8);
     }
     th {
-        
+
     }
     td {
-        
+
     }
 
     thead {
-        
+
 
         th {
             font-weight:$semibold;
         }
         td {
-            
+
         }
     } // thead
 
     tbody {
-        
+
 
         th {
-            
+
         }
         td {
-            
+
         }
     } // tbody
 
@@ -477,7 +477,7 @@ div#content_wrapper {
         }
 
         .svg & {
-            background-image:url("../images/branding/branding.svg");
+            background-image:url("/static/images/branding/branding.svg");
             background-repeat:no-repeat;
 
             img {
@@ -521,7 +521,7 @@ ul#nav_pri {
 
         &:hover,
         &:focus {
-            
+
         }
     }
 } // .navigation
@@ -549,7 +549,7 @@ ul#nav_pri {
             display:block;
         }
     }
-    
+
     // @end HORIZONTAL CLASS //
 
     /* @start BREADCRUMBS -------------------- */

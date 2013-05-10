@@ -14,22 +14,29 @@
         <link rel="author" type="text/plain" href="/humans.txt" />
 
         <!-- CSS -->
-        <link rel="stylesheet" media="all" type="text/css" href="/static/css/screen.css" />
-        <link rel="stylesheet" media="all" type="text/css" href="/static/css/screen-prototype.css" />
-        <link rel="stylesheet" media="print" type="text/css" href="/static/css/print.css" />
+        <link rel="stylesheet" media="all" type="text/css" href="{{ STATIC_URL }}styles/dist/screen.css" />
+        <link rel="stylesheet" media="all" type="text/css" href="{{ STATIC_URL }}styles/dist/screen-prototype.css" />
+        <link rel="stylesheet" media="print" type="text/css" href="{{ STATIC_URL }}styles/dist/print.css" />
 
         <!-- IE CSS -->
-        <!--[if IE 8]><link rel="stylesheet" media="all" type="text/css" href="/static/css/ie/screen_ie8.css" /><![endif]-->
-        <!--[if lte IE 7]><link rel="stylesheet" media="all" type="text/css" href="/static/css/ie/screen_ie7.css" /><![endif]-->
+        <!--[if IE 8]><link rel="stylesheet" media="all" type="text/css" href="{{ STATIC_URL }}css/ie/screen_ie8.css" /><![endif]-->
+        <!--[if lte IE 7]><link rel="stylesheet" media="all" type="text/css" href="{{ STATIC_URL }}css/ie/screen_ie7.css" /><![endif]-->
 
         <!-- ICONS -->
-        <link rel="icon" type="image/png" href="/static/images/icons/favicon.png" />
+        <link rel="icon" type="image/png" href="{{ STATIC_URL }}images/icons/favicon.png" />
 
         <!-- RSS -->
         <!-- <link rel="alternate" type="application/rss+xml" title="RSS Feed" href="/rss/feed.xml" /> -->
 
+        <!-- GLOBAL JS SETTINGS OBJECT -->
+        <script type="text/javascript">
+            var settings = settings || {};
+            settings.debug = {% if debug %}true{% else %}false{% endif %};
+            settings.staticUrl = "{{ STATIC_URL }}";
+        </script>
+
         <!-- MODERNIZR -->
-        <script src="/static/js/modernizr.js"></script>
+        <script src="{{ STATIC_URL }}scripts/lib/modernizr/modernizr.js"></script>
 
     </head>
 
@@ -47,7 +54,7 @@
                 {% block branding %}
                 <p id="branding">
                     <a href="/">
-                        <img src="/static/images/branding/branding.png" width="160" height="102" alt="Branding" />
+                        <img src="{{ STATIC_URL }}images/branding/branding.png" width="160" height="102" alt="Branding" />
                     </a>
                 </p>
                 {% endblock %}
@@ -67,13 +74,13 @@
 
                 <div class="content_pri">
 
-                    
+
 
                 </div> <!-- // .content_pri -->
 
                 <div class="content_sec">
 
-                    
+
 
                 </div> <!-- // .content_sec -->
 
@@ -90,19 +97,8 @@
         </div> <!-- // #page -->
 
         <!-- JAVASCRIPT -->
-        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-        <script src="/static/js/EDJ.js"></script>
 
-        <!-- CALL DOC READY FUNCTIONS -->
-        <script type="text/javascript">
-        $(document).ready(function() {
-            var settings = {
-                debug: true,
-                STATIC_URL: '/static/'
-            };
-            EDJ.on_ready(settings);
-        });
-        </script>
+        <script src="{{ STATIC_URL }}scripts/dist/ultimate_package.{% if not debug %}min.{% endif %}js"></script>
 
     </body>
 </html>

@@ -2,14 +2,14 @@
 # The Ultimate Package
 [![Build Status](https://secure.travis-ci.org/erskinedesign/ed.ultimate_package.png?branch=master)](http://travis-ci.org/erskinedesign/ed.ultimate_package)
 
-The Ultimate Package is [Erskine Design][]'s framework for rapidly developing 
-the front-end of our projects and is under constant development and improvement 
+The Ultimate Package is [Erskine Design][]'s framework for rapidly developing
+the front-end of our projects and is under constant development and improvement
 by the team at Erskine Design, who use it daily.
 
 Please refer to the wiki for [Erskine's front-end coding standards][wiki]
 
 ## Getting started
-The package is a barebones framework to help you rapidly develop your projects. 
+The package is a barebones framework to help you rapidly develop your projects.
 Create templates using the [Twig template engine][] in `/templates` as you need
 them and use `/templates/elements.html` to check your styles.
 
@@ -21,20 +21,27 @@ The app will render your template directly from the url, so if you go to
 You can use `screen-prototype.scss` for prototyping and `screen.scss` for production work.
 
 ## Requirements and setup
-* A __PHP >= 5.3__ web server to interpret the PHP files in the package
-* [SASS][] >= 3.2.0.alpha.261 - Stylesheet language
+* [Node][] >= v0.10.0
+* [Grunt][] >= 0.4.0
+* [Composer][]
+ 
+1. Install [Node][] and NPM
+1. Install grunt cli `npm install -g grunt-cli`
+1. Install [Composer][] locally with `curl -s http://getcomposer.org/installer | php` or if you're on OS X you should probably use brew.
 
 ### Installing the Ultimate Package
-1. Clone the repository, `git clone git://github.com/erskinedesign/ed.ultimate_package.git` or probably better still - [download it][download] so you
-don't have all of our Git history.
-2. Install [Composer][] `curl -s http://getcomposer.org/installer | php`
-3. Install the requirements `php composer.phar install`
-4. Point your web server to the `/public` folder
+1. Clone the repository, `git clone git://github.com/erskinedesign/ed.ultimate_package.git`
+1. Update the submodules `git submodule init && git submodule update`
+1. Install the PHP requirements `php composer.phar install`
+1. Install grunt packages `npm install` the packages are defined in `packages.json` if you're nosy
+1. Compile the CoffeeScript and Sass and run the JS unit tests `grunt`
+1. Point your web server to the `/public` folder
 
-### Installing SASS
-1. **Install**: Run `gem install sass` from the terminal
-2. **Enable**: Run `sass --watch public/static/scss:public/static/css --style expanded`
-from the terminal within your project directory
+## Watching for changes and compiling CoffeeScript / Sass
+Grunt watch is a required package which allows you to watch for changes to your Sass and CoffeeScript.
+This is useful for development, because as you save your files, Grunt will recompile them for you.
+
+    grunt watch
 
 ## Not designed for production!
 This codebase is designed solely for development usage, we __strongly__
@@ -53,8 +60,10 @@ The Ultimate Package is Copyright &copy; 2012 [Erskine Design][] and is licensed
 [faqs]: https://github.com/erskinedesign/ed.ultimate_package/wiki/FAQs
 [issues]: https://github.com/erskinedesign/ed.ultimate_package/issues
 [Twig template engine]: http://twig.sensiolabs.org/
-[SASS]: http://sass-lang.com/
 [Composer]: http://getcomposer.org/
+[Node]: https://github.com/joyent/node/wiki/Installing-Node.js-via-package-manager
+[NPM]: https://npmjs.org/
+[grunt]: https://github.com/gruntjs/grunt/wiki/Installing-grunt
 
 [the team at Erskine Design]: https://twitter.com/erskinedesign/team/members
 [Greg Wood]: http://gregorywood.co.uk/

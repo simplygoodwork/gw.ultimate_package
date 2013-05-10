@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>QUnit</title>
+
+        <!-- qunit -->
+        <link rel="stylesheet" href="./qunit/qunit/qunit.css">
+        <script src="./qunit/qunit/qunit.js"></script>
+
+        <!-- libraries -->
+        <script src="../lib/jquery/jquery.js"></script>
+
+        <!-- plugin sources -->
+        <script src="../build/access_links.js"></script>
+
+        <!-- unit tests -->
+        <script src="./build/access_links.test.js"></script>
+
+    </head>
+    <body>
+        <div id="qunit" tabindex="0"></div>
+        <div id="qunit-fixture">
+
+            <ul id='nav_access'>
+                <li><a href='#nav_pri'>Skip to navigation</a></li>
+                <li><a href='#content_wrapper'>Skip to content</a></li>
+            </ul> <!-- // #nav_access -->
+
+            <div id="content_wrapper" role="main"></div>
+
+        </div>
+    </body>
+</html>

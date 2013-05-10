@@ -15,7 +15,12 @@ $app->get('{template}', function() use($app) {
         $app->abort(404, "Template '$template' does not exist.");
     }
 
-    return $app['twig']->render($template);
+    $template_vars = array(
+        'STATIC_URL' => '/static/',
+        'debug' => $app['debug']
+    );
+
+    return $app['twig']->render($template, $template_vars);
 })
 ->assert('template', '.*')
 ->method('GET');

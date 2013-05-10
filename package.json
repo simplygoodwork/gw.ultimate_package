@@ -1,0 +1,59 @@
+{
+  "name": "ultimate_package",
+  "title": "Ultimate Package",
+  "version": "2.1.0",
+  "description": "Erskine's Ultimage Package",
+  "homepage": "https://github.com/erskinedesign/ed.ultimate_package",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/linssen/ed.ultimate_package.git"
+  },
+  "contributors": [
+    {
+      "name": "Garrett Winder",
+      "website": "http://garrettwinder.com/"
+    },
+    {
+      "name": "Chris Rowe",
+      "website": "http://chrisrowe.net/"
+    },
+    {
+      "name": "Wil Linssen",
+      "website": "http://linssen.me/"
+    }
+  ],
+  "licenses": [
+    {
+      "type": "Creative Commons 3.0",
+      "url": "http://creativecommons.org/licenses/by-nc-sa/3.0/"
+    }
+  ],
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "html"
+  ],
+  "author": "Erskine Design",
+  "license": "Creative Commons 3",
+  "readmeFilename": "readme.md",
+  "dependencies": {
+    "coffee-script": "~1.3.3"
+  },
+  "devDependencies": {
+    "grunt": "~0.4.0",
+    "grunt-contrib-jshint": "~0.1.0",
+    "grunt-contrib-nodeunit": "~0.1.0",
+    "grunt-contrib-coffee": "~0.4.0",
+    "grunt-contrib-concat": "~0.1.2rc6",
+    "grunt-contrib-uglify": "~0.1.1rc6",
+    "grunt-contrib-sass": "~0.2.2rc7",
+    "grunt-contrib-watch": "~0.2.0rc7",
+    "grunt-contrib-qunit": "~0.2.1",
+    "grunt-contrib-connect": "~0.3.0"
+  }
+}
